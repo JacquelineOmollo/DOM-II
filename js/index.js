@@ -68,7 +68,7 @@ function myFunction() {
 
 //resize
 window.addEventListener("resize", function() {
-  document.getElementsByTagName("p").innerHTML = Math.random();
+  document.querySelector("footer").innerHTML = Math.random();
 });
 
 //keydown
@@ -79,25 +79,37 @@ window.addEventListener("keydown", event => {
 });
 
 //scroll
-/*document.body.appendChild(
+document.body.appendChild(
   document.createTextNode("This is the scroll ".repeat(1))
-);*/
+);
 
-let bar = document.querySelector("");
+let bar = document.querySelector("html");
 window.addEventListener("scroll", () => {
   let max = document.body.scrollHeight - innerHeight;
   bar.style.width = `${(pageYOffset / max) * 100}%`;
 });
 
-// focus
-for (let field of Array.from(fields)) {
-  field.addEventListener("focus", event => {
-    let text = event.target.getAttribute("data-help");
-    help.textContent = text;
-  });
-  field.addEventListener("blur", event => {
-    help.textContent = "";
-  });
+//arrow up and arrow down
+let p = document.querySelector("p");
+let size;
+function setSize(newSize) {
+  size = newSize;
+  p.style.fontSize = size + "px";
 }
+setSize(20);
 
-///touch event
+function arrow(event) {
+  if (event.key == "ArrowUp") {
+    if (size > 70) {
+      p.textContent = "💥";
+      document.body.removeEventListener("keydown", arrow);
+    } else {
+      setSize(size * 1.1);
+      event.preventDefault();
+    }
+  } else if (event.key == "ArrowDown") {
+    setSize(size * 0.9);
+    event.preventDefault();
+  }
+}
+document.body.addEventListener("keydown", arrow);
