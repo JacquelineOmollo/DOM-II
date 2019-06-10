@@ -55,12 +55,49 @@ function myFunction() {
   document.querySelector(".btn").innerHTML = "Enjoy Your Stay!";
 }
 
+//click
+function myFunction() {
+  let content;
+  if (confirm("Press a button!")) {
+    content = "You pressed OK!";
+  } else {
+    content = "You pressed Cancel!";
+  }
+  document.getElementsByClassName(".btn").innerHTML = content;
+}
+
 //resize
-window.querySelector("resize", function() {
-  document.getElementsByTagName("").innerHTML = Math.random();
+window.addEventListener("resize", function() {
+  document.getElementsByTagName("p").innerHTML = Math.random();
 });
 
 //keydown
-//load
+window.addEventListener("keydown", event => {
+  if (event.key == " " && event.ctrlKey) {
+    console.log("Continuing!");
+  }
+});
+
 //scroll
-//select
+/*document.body.appendChild(
+  document.createTextNode("This is the scroll ".repeat(1))
+);*/
+
+let bar = document.querySelector("");
+window.addEventListener("scroll", () => {
+  let max = document.body.scrollHeight - innerHeight;
+  bar.style.width = `${(pageYOffset / max) * 100}%`;
+});
+
+// focus
+for (let field of Array.from(fields)) {
+  field.addEventListener("focus", event => {
+    let text = event.target.getAttribute("data-help");
+    help.textContent = text;
+  });
+  field.addEventListener("blur", event => {
+    help.textContent = "";
+  });
+}
+
+///touch event
