@@ -113,3 +113,28 @@ function arrow(event) {
   }
 }
 document.body.addEventListener("keydown", arrow);
+
+//reload button
+const log = document.querySelector("p");
+const reload = document.querySelector("#reload");
+
+reload.addEventListener("click", () => {
+  log.textContent = "";
+  window.setTimeout(() => {
+    window.location.reload(true);
+  }, 200);
+});
+document.addEventListener("DOMContentLoaded", event => {
+  log.textContent = log.textContent + `DOMContentLoaded\n`;
+});
+
+///focus
+const password = document.querySelector('input[type="password"]');
+
+password.addEventListener("focus", event => {
+  event.target.style.background = "coral";
+});
+
+password.addEventListener("blur", event => {
+  event.target.style.background = "";
+});

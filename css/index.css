@@ -350,3 +350,8 @@ img {
   background: #FFFFFF;
   color: #17A2B8;
 }
+.home .content-pick .destination #focus {
+  border-radius: 2%;
+  background-color: "coral";
+  margin: 0 auto;
+}
